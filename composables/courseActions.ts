@@ -2,6 +2,7 @@ export default async function completeCourse(courseId: number) {
     const client = useSupabaseClient()
     const user = useSupabaseUser()
 
+    // @ts-ignore
     await client
         .from('enrollment')
         .upsert({
