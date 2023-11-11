@@ -1,14 +1,19 @@
 <script setup lang="ts">
 const selectedDep = useDepartmentFilter()
+const coursesStore = useCoursesStore()
+
+coursesStore.getCourses()
+coursesStore.getCompletedCourses()
+
+const completedCourseIds = coursesStore.completedCourses.map((item) => item.course_id.id);
+
+function isCourseCompleted(courseId: number) {
+  return completedCourseIds.includes(courseId)
+}
 
 const client = useSupabaseClient()
 const { data: departments } = await useAsyncData('department', async () => {
   const { data } = await client.from('department').select()
-  return data
-})
-
-const { data: courses } = await useAsyncData('course', async () => {
-  const { data } = await client.from('course').select()
   return data
 })
 </script>
@@ -18,14 +23,15 @@ const { data: courses } = await useAsyncData('course', async () => {
   <Select
       :select-from="departments"
   />
-  <div class="flex gap-6">
+  <div class="flex gap-6 flex-wrap">
     <CourseCard
-        v-for="course in courses.filter(({ department_id }) => department_id === selectedDep.department.id)"
+        v-for="course in coursesStore.courses.filter(({department_id}) => department_id === selectedDep.department.id)"
         :id="course.id"
         :title="course.title"
         :description="course.description"
         :duration="course.duration"
         :content_url="course.content_url"
+        :is-completed="isCourseCompleted(course.id)"
     />
   </div>
 </template>
