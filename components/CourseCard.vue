@@ -13,12 +13,11 @@ const coursesStore = useCoursesStore()
 </script>
 
 <template>
-  <div :class="[
-      isCompleted ? 'completed' : 'card', 'card p8 gap-8 flex flex-col'
-  ]">
+  <div class="card p8 gap-8 flex flex-col">
     <div>
       <h3 class="text-3xl font-bold">{{props.title}}</h3>
       <p class="opacity-70">{{props.description}}</p>
+      <p v-if="isCompleted">Курс выполнен!</p>
     </div>
 
     <div class="flex gap-6 items-center">
@@ -29,10 +28,10 @@ const coursesStore = useCoursesStore()
           :title="props.title"
       />
       <button
-          :disabled="isCompleted"
+          v-if="!isCompleted"
           @click="coursesStore.completeCourse(id)"
-          :class="[isCompleted ? 'opacity-30' : '', 'rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75']">
-        Курс пройден
+          class="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+        Пройти курс
       </button>
     </div>
   </div>

@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 
-
 export const useCoursesStore = defineStore('courses-store', {
     // arrow function recommended for full type inference
     state: () => {
@@ -55,6 +54,7 @@ export const useCoursesStore = defineStore('courses-store', {
             })
 
             await this.getCourses()
+            await this.getCompletedCourses()
         }
     },
 })
