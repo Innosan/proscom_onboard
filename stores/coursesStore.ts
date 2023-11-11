@@ -57,4 +57,7 @@ export const useCoursesStore = defineStore('courses-store', {
             await this.getCompletedCourses()
         }
     },
+    persist: {
+        storage: persistedState.sessionStorage,
+    }
 })

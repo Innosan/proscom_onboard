@@ -7,8 +7,6 @@ coursesStore.getCompletedCourses()
 
 const completedCourseIds = coursesStore.completedCourses.map((item) => item.course_id.id);
 
-console.log(completedCourseIds)
-
 function isCourseCompleted(courseId: number) {
   return completedCourseIds.includes(courseId)
 }
