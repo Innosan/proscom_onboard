@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '~/assets/css/fonts.css',
     '~/assets/css/containers.css',
     '~/assets/css/background.css',
+    '~/assets/css/iframe_doc.css',
   ],
     modules: [
       "@nuxtjs/tailwindcss",

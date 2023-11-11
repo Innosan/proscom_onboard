@@ -60,7 +60,7 @@ function openModal() {
               leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-                class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                class="w-full h-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                   as="h3"
@@ -68,7 +68,7 @@ function openModal() {
               >
                 {{props.title}}
               </DialogTitle>
-              <iframe :src="`https://docs.google.com/gview?url=${props.previewUrl}&embedded=true`"></iframe>
+              <iframe :src="`https://docs.google.com/gview?url=${props.previewUrl}&embedded=true`" class="iframe_docx"></iframe>
               <div class="mt-4">
                 <button
                     type="button"
